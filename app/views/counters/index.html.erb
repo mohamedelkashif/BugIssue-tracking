@@ -1,0 +1,26 @@
+<%= form_for(counters) do |f| %>
+<p id="notice"><%= notice %></p>
+
+<h1>Counters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @counters.each do |counter| %>
+      <div class="field">
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+  </div>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Counter', new_counter_path %>
+<% end%>

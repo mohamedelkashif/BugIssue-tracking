@@ -1,0 +1,33 @@
+<h1>Bugs counter</h1>
+
+<%= form_for search_path, method: :get do |f| %>
+  <p>
+    <%= f.label "Search for" %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "Go", name: nil %>
+  </p>
+<% end %>
+
+<ul>
+   <p>Total number of bugs </P>  
+  <% @bugs.each do |bug| %>
+
+    <li>
+
+      <h3>
+
+
+        <%= link_to bug.id, controller: "bugs", action: "show", id: bug._id%>
+        <%= link_to bug.status, controller: "bugs", action: "show", id: bug._id%>
+        <%= link_to bug.priority, controller: "bugs", action: "show", id: bug._id%>
+        <%= link_to bug.comment, controller: "bugs", action: "show", id: bug._id%>
+        
+        <%= link_to bug.bugnumber, controller: "bugs", action: "show", id: bug._id%>
+
+      </h3>
+    </li>
+
+    
+  <% end %>
+  
+</ul>

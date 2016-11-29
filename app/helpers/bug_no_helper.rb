@@ -1,0 +1,2 @@
+module BugNoHelper
+end

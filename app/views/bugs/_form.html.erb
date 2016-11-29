@@ -1,0 +1,70 @@
+<%= form_for(bug) do |f| %>
+  <% if bug.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bug.errors.count, "error") %> prohibited this bug from being saved:</h2>
+
+      <ul>
+      <% bug.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- <div class="field">
+    <%= f.label :state_id %>
+     <%= f.collection_select :state_id, State.all, :id, :id %>
+  </div> -->
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.select(:status, options_for_select([['NEW'], ['IN-PROGRESS'], ['CLOSED']])) %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+  </div>
+  
+
+  <div class="field">
+    <%= f.label :priority %>
+    <%= f.select(:priority, options_for_select([['minor'], ['major'], ['critical']])) %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :appToken %>
+    <%= f.collection_select :app_token, App.all, :appToken, :appToken %>
+    
+  </div>
+
+<%= f.fields_for :state do |o| %>
+
+  
+  <%= o.label :device_name %>
+  <%= o.text_field :device_name %>
+
+  <%= o.label :device_os %>
+  <%= o.text_field :device_os %>
+
+  <%= o.label :device_memory %>
+  <%= o.text_field :device_memory %>
+
+  <%= o.label :device_storage %>
+  <%= o.text_field :device_storage %>
+    
+
+
+  
+
+  <div class="actions">
+    <input name="commit" value="Create Bug" data-disable-with="Create Bug" type="submit">
+  </div>
+
+  
+
+<% end %>
+<% end %>
+
